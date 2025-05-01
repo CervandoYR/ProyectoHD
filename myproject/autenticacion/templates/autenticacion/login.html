@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel='stylesheet' href="{% static 'mdb.min.css' %}">
+    <link rel='stylesheet' href="{% static 'login.css' %}">
+    <script src="{% static 'login.js'%}""></script>
+    <link rel="icon" href="{% static 'imagenes/logo_naciones_unidas.png'%}" type="image/x-icon">
+
+    <style>
+        body{
+            overflow-y: hidden;
+        }
+        #intro {
+            background-image: url(https://i.pinimg.com/originals/9d/01/f0/9d01f0c69f3eeb3cdf18e1237e6176cc.jpg);
+            height: 110vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            
+        }
+
+        @media (min-width: 992px) {
+            #intro {
+                margin-top: -58.59px;
+            }
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .btn-secondary {
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="intro" class="bg-image shadow-2-strong">
+            <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-5 col-md-8">
+                            <form method="post" class="form-container">
+                                {% csrf_token %}
+                                <h2>Iniciar Sesión</h2>
+                            
+                                {% if messages %}
+                                    <div>
+                                        {% for message in messages %}
+                                            <div class="alert alert-danger">{{ message }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            
+                                <div class="form-outline mb-4" data-mdb-input-init>
+                                    {{ form.username.label_tag }}
+                                    <input class="username" type="text" name="{{ form.username.name }}" 
+                                           value="{{ form.username.value|default:'' }}" 
+                                           class="form-control" placeholder="Usuario">
+                                    <div class="error-message">{{ form.username.errors }}</div> 
+                                </div>  
+                            
+                                <div class="form-outline mb-4" data-mdb-input-init>
+                                    {{ form.password.label_tag }}
+                                    <input class="password" type="password" name="{{ form.password.name }}" 
+                                           value="{{ form.password.value|default:'' }}" 
+                                           class="form-control" placeholder="Contraseña">
+                                    <div class="error-message">{{ form.password.errors }}</div> 
+                                </div>
+                            
+                                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                            </form>
+                            
+                            <div class="mt-3 text-center">
+                                <span>¿No tienes una cuenta? </span>
+                                
+                            </div>
+                            <a href="{% url 'index' %}" class="btn btn-secondary mt-3 btn btn-light" style="border-radius: 10px;">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <script type="text/javascript" src="{% static 'mdb.umd.min.js' %}"></script>
+    
+</body>
+
+</html>

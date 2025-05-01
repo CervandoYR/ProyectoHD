@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{% static 'mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="{% static 'registro.js'%}""></script>
+    <link rel="icon" href="{% static 'imagenes/logo_naciones_unidas.png'%}" type="image/x-icon">
+
+</head>
+
+<body>
+    <div id="intro" class="bg-image shadow-2-strong">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-md-8">
+                        <div class="form-container">
+                            <h2>Registro de Usuario</h2>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="form-outline mb-4">
+                                    {{ form.username.label_tag }}
+                                    <input class="username" type="text" name="{{ form.username.name }}" value="{{ form.username.value|default:'' }}" placeholder="Usuario" >
+                                    <div class="error-message">{{ form.username.errors }}</div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    {{ form.email.label_tag }}
+                                    <input class="correo" type="email" name="{{ form.email.name }}" value="{{ form.email.value|default:'' }}" placeholder="Correo Electrónico">
+                                    <div class="error-message">{{ form.email.errors }}</div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    {{ form.first_name.label_tag }}
+                                    <input class="nombre" type="text" name="{{ form.first_name.name }}" value="{{ form.first_name.value|default:'' }}" placeholder="Nombre">
+                                    <div class="error-message">{{ form.first_name.errors }}</div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    {{ form.last_name.label_tag }}
+                                    <input class="apellido" type="text" name="{{ form.last_name.name }}" value="{{ form.last_name.value|default:'' }}" placeholder="Apellido">
+                                    <div class="error-message">{{ form.last_name.errors }}</div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    {{ form.rol.label_tag }}
+                                    {{ form.rol }}
+                                    <div class="error-message">{{ form.rol.errors }}</div>
+                                </div>                                
+                                <div class="form-outline mb-4">
+                                    {{ form.password1.label_tag }}
+                                    <input class="password1" type="password" name="{{ form.password1.name }}" value="{{ form.password1.value|default:'' }}" placeholder="Contraseña">
+                                    <div class="error-message">{{ form.password1.errors }}</div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    {{ form.password2.label_tag }}
+                                    <input class="password2" type="password" name="{{ form.password2.name }}" value="{{ form.password2.value|default:'' }}" placeholder="Confirmar Contraseña">
+                                    <div class="error-message">{{ form.password2.errors }}</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Registrarse</button>
+                            </form>
+                            <a href="{% url 'login' %}" class="btn btn-secondary">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'mdb.umd.min.js' %}"></script>
+
+</body>
+
+</html>

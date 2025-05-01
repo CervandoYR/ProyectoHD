@@ -1,0 +1,52 @@
+/* Estilos generales para el modal */
+.modal-content {
+    border-radius: 8px;
+}
+
+/* Encabezado del modal */
+.modal-header {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Formulario dentro de los modales */
+#addForm,
+#editForm {
+    padding: 20px;
+}
+
+/* Estilo para los inputs */
+.modal-body input[type="text"],
+.modal-body input[type="email"],
+.modal-body input[type="number"],
+.modal-body select {
+    border: 1px solid #ced4da; /* Color de borde suave */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    width: 100%; /* Ancho completo */
+    margin-bottom: 15px; /* Espacio entre inputs */
+}
+
+/* Estilo para el botón de guardar */
+.modal-body button.btn-primary {
+    background-color: #28a745; /* Color verde */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto hover para el botón */
+.modal-body button.btn-primary:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el mouse */
+}
+
+/* Estilo para el botón de cerrar */
+.modal-header .close {
+    color: white; /* Color del botón de cerrar */
+}
+
+/* Estilos para los mensajes de error */
+.error-message {
+    color: red; /* Color rojo para mensajes de error */
+    margin-top: 10px; /* Espacio superior */
+}

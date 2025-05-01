@@ -1,0 +1,1687 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Previene el desbordamiento horizontal */
+
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  color: rgb(12, 36, 248);
+  position: fixed;
+  /* Navbar fijo en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* Sombra para destacar el navbar */
+}
+
+
+/* nav logo */
+.nav_logo {
+  width: 50px;
+}
+
+.nav_log_img {
+  width: 50px;
+  height: auto;
+}
+
+/* nav links e iconos */
+.nav_links,
+.nav_icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* Links */
+.lista-links li {
+  margin: 0 10px;
+}
+
+.navbar-nav .nav-item .nav-link-in {
+  text-decoration: none;
+  color: rgb(12, 36, 248);
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.navbar-nav .nav-item .nav-link-in:hover {
+  color: rgb(12, 36, 248);
+  background-color: rgb(232, 232, 248);
+  border-radius: 20px;
+  padding: auto;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Iconos */
+.lista-icons li {
+  margin: 0 10px;
+}
+
+.lista-icons a {
+  text-decoration: none;
+}
+
+.nav_icono {
+  border: 2.5px solid rgb(12, 36, 248);
+  border-radius: 50%;
+  padding: 3.5px;
+  width: 25px;
+  height: 25px;
+  color: rgb(12, 36, 248);
+}
+
+.nav_icono:hover {
+  background-color: rgb(12, 36, 248);
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+/* Estilo para la versión móvil */
+@media (max-width: 768px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    /* Coloca el menú justo debajo del navbar */
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+
+  .navbar-nav .nav-item .nav-link-in {
+    font-size: 1em;
+    padding: 8px 20px;
+  }
+
+  .nav_icono {
+    padding: 8px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .nav_log_img {
+    width: 40px;
+  }
+
+  .navbar-toggler {
+    z-index: 1001;
+  }
+
+  /* Ajuste del contenido principal para que no se superponga al navbar */
+  .content {
+    margin-top: 70px;
+  }
+}
+
+
+/*fin del navbar*/
+
+/*modales todo practicamente*/
+
+.modal {
+  width: auto;
+
+}
+
+.modal-dialog {
+  max-width: 70%;
+  margin: auto;
+
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 25px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+
+}
+
+.modal-body {
+  padding: 0;
+  overflow: hidden;
+  
+}
+
+
+.modal_texto {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+
+.modal_texto h5,
+.modal_texto p {
+  line-height: 3;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.modal_texto h5 {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  @media (max-width: 768px) {
+    .modal_texto {
+      max-height: 60vh;
+    }
+  }
+
+
+  .modal-dialog {
+    max-width: 90vh;
+  }
+
+  .modal-body {
+    padding: 10px;
+  }
+
+  .modal_texto h5 {
+    font-size: 18px;
+  }
+
+  .modal_texto p {
+    font-size: 16px;
+
+
+  }
+}
+
+/* Estilo específico para modales */
+.modal-imagen1 .modal-body,
+.modal-imagen2 .modal-body,
+.modal-imagen3 .modal-body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow-y: auto;
+  /* Ajusta la altura automáticamente */
+}
+
+/* Ajusta el tamaño de la imagen del carrusel en modales */
+.modal-imagen1 .carousel-inner img,
+.modal-imagen2 .carousel-inner img,
+.modal-imagen3 .carousel-inner img {
+  height: 500px;
+  padding: 20px;
+}
+
+/* Estilo del texto en los modales */
+.modal_texto {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Títulos en el texto del modal */
+.modal_texto h5 {
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 90vw;
+    /* Ancho máximo del modal para pantallas pequeñas */
+  }
+
+  .modal-imagen1 .carousel-inner img,
+  .modal-imagen2 .carousel-inner img,
+  .modal-imagen3 .carousel-inner img {
+    height: auto;
+    /* Ajusta la altura de las imágenes */
+    width: 100%;
+    /* Asegura que las imágenes ocupen todo el ancho del modal */
+    padding: 0;
+    /* Elimina el padding para maximizar el uso del espacio */
+  }
+
+  .modal_texto {
+    font-size: 16px;
+    /* Ajusta el tamaño de la fuente para pantallas más pequeñas */
+  }
+
+  .modal_texto h5 {
+    font-size: 18px;
+    /* Ajusta el tamaño de la fuente del título */
+  }
+}
+
+
+
+.titulo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+
+.titulo-deporte {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.presentacion_texto h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.section_imagenes p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.presentacion_texto h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/*fin de los modales*/
+
+
+
+
+/*section de la presentacion, varias imagenes rotando*/
+
+.sect_presentacion .carousel-inner {
+  width: 100%;
+}
+
+.sect_presentacion .carousel-inner .carousel-item {
+  height: 630px;
+}
+
+.sect_presentacion .carousel-inner .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sect_presentacion .carousel-item {
+  height: 630px;
+}
+
+@media (max-width: 1200px) {
+  .sect_presentacion .carousel-inner .carousel-item {
+    height: 500px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sect_presentacion .carousel-inner .carousel-item {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sect_presentacion .carousel-inner .carousel-item {
+    height: 300px;
+  }
+}
+
+/*botones del carrusel*/
+
+.carousel-indicators [data-bs-target] {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  opacity: 1;
+  border: 4px solid #ffffff;
+  background-color: #696868;
+}
+
+.carousel-indicators .active {
+  width: 15px;
+  height: 15px;
+  border: 4px solid #141414;
+  background-color: #ffffff;
+}
+
+.carousel-indicators [data-bs-target]:hover {
+  border: 4px solid #141414;
+  background-color: #ffffff;
+}
+
+/*flechas del carrusel*/
+
+.carousel {
+  position: relative;
+}
+
+
+/* Estilo para las flechas */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  opacity: 1;
+  /*
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  */
+  top: 50%;
+  /*transform: TranslateY(-50%);*/
+}
+
+.carousel-control-prev {
+  right: auto;
+  left: 75px;
+}
+
+.carousel-control-next {
+  left: auto;
+  right: 75px;
+}
+
+/* Ajustes del icono dentro del botón */
+.fa-solid,
+.fa-angle-left,
+.fa-solid,
+.fa-angle-right {
+  width: 30px;
+  height: 30px;
+  background-size: 100%, 100%;
+}
+
+/*
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+  background-size: 100%, 100%;
+}
+*/
+
+/* Efecto hover en las flechas */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+  background-color: rgb(0, 0, 0)
+    /* Oscurecer fondo al pasar el cursor */
+}
+
+
+/* Imagenes del carrusel*/
+
+.carousel-inner img {
+  width: 100%;
+  height: 800px;
+  /* Ajusta la altura según tus necesidades */
+  /*object-fit: cover;*/
+}
+
+/*texto del carrusel*/
+
+.carousel-caption {
+  top: 20px;
+  /* Ajusta la distancia desde el borde superior */
+  left: 20px;
+  /* Ajusta la distancia desde el borde izquierdo */
+  color: white;
+  /* Color del texto */
+  text-align: left;
+  /* Alinea el texto a la izquierda */
+}
+
+.carousel-caption h5 {
+  font-size: 2rem;
+  /* Tamaño del texto más grande */
+  margin-bottom: 0.5rem;
+  /* Espacio inferior */
+}
+
+
+.carousel-caption p {
+  font-size: 1.25rem;
+  /* Tamaño del texto más grande */
+}
+
+
+
+/*section de personal*/
+
+.sect_personal {
+  background-color: #ffffff;
+  padding: 30px 0
+}
+
+
+
+.personal_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.imagen_aniversario img {
+  width: 400px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.imagen_director img {
+  width: 450px;
+  height: 300px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .imagen_aniversario img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .imagen_director img {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+
+/*personal texto*/
+
+.personal_texto {
+  flex: 1;
+  background-color: white;
+  width: 49%;
+  margin: auto 7%;
+}
+
+.personal_texto h2 {
+  text-align: center;
+  /* Alineamos el botón al centro */
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.personal_texto p {
+  font-size: 19px;
+  text-align: left;
+  margin-bottom: 25px;
+  line-height: 1.8;
+  width: 100%;
+}
+
+.personal_texto_boton {
+  margin-bottom: 20px;
+}
+
+.personal_texto_boton button {
+  padding: 10px 25px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 10px;
+  background-color: rgb(39, 59, 240);
+  border-radius: 0;
+  border: none;
+  color: #ffffff;
+}
+
+/*personal imagen*/
+
+.personal_imagen {
+  flex: 1.14;
+  background-color: none;
+
+}
+
+.personal_imagen_colper {
+  width: 95%;
+  height: 400px;
+  margin: 20px;
+  position: relative;
+}
+
+/*section frase*/
+
+.sect_frase {
+  background-color: rgb(12, 142, 248);
+  display: block;
+  padding: 40px;
+  color: #fff;
+}
+
+.frase_div {
+  margin: 0px auto;
+  row-gap: 40px;
+}
+
+.frase_div h2 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.frase_div p {
+  margin: 40px 0;
+  font-style: italic;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.frase_div_p {
+  padding: 0 550px;
+}
+
+@media (max-width: 1550px) {
+  .frase_div_p {
+    padding: 0 0px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .frase_div_p {
+    padding: 0 0px;
+  }
+}
+
+
+.frase_div h3 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+/*division de la imagen del director*/
+
+.fra_div_de {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fra_div_de_txt p {
+  font-style: normal;
+  text-align: left;
+  margin-left: 30px;
+  font-size: 1.1rem;
+  margin: 10px 15px;
+}
+
+.fra_div_de_txt p:nth-of-type(2) {
+  font-weight: 700;
+}
+
+
+.fra_div_de_img_img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 3.5px solid #000000;
+}
+
+/*section de imagenes y modal y carrusel*/
+
+.section_imagenes {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.section_imagenes .imagenes-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.section_imagenes .imagen-col {
+  flex: 1;
+  max-width: 30%;
+  margin: 10px;
+  text-align: center;
+}
+
+.section_imagenes img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.section_imagenes p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+  .section_imagenes .imagen-col {
+    max-width: 45%;
+    /* Ajusta el ancho máximo en pantallas medianas */
+  }
+
+  .section_imagenes img {
+    height: 400px;
+    /* Ajusta la altura en pantallas medianas */
+  }
+}
+
+@media (max-width: 992px) {
+  .section_imagenes .imagen-col {
+    max-width: 100%;
+    /* Ajusta el ancho máximo en pantallas pequeñas */
+  }
+
+  .section_imagenes img {
+    height: 300px;
+    /* Ajusta la altura en pantallas pequeñas */
+  }
+
+  .section_imagenes p {
+    font-size: 14px;
+    /* Ajusta el tamaño del texto en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+  .section_imagenes img {
+    height: 200px;
+    /* Ajusta la altura en pantallas muy pequeñas */
+  }
+
+  .section_imagenes p {
+    font-size: 12px;
+    /* Ajusta el tamaño del texto en pantallas muy pequeñas */
+  }
+}
+
+
+/* Estilos generales para la sección de eventos */
+.section_imagenes {
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  /* Cambia el color de fondo si es necesario */
+}
+
+.section_imagenes .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.evento1 {
+  width: 100%;
+  display: block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.evento1:hover {
+  transform: scale(1.05);
+}
+
+.evento2 {
+  width: 100%;
+  display: block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.evento2:hover {
+  transform: scale(1.05);
+}
+
+
+.evento3 {
+  width: 100%;
+  display: block;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.evento3:hover {
+  transform: scale(1.05);
+}
+
+
+.evento:hover {
+  transform: scale(1.05);
+}
+
+.evento img {
+  width: 100%;
+  /* Mantiene el tamaño original de la imagen */
+  height: auto;
+  /* Asegura que la relación de aspecto se mantenga */
+  display: block;
+}
+
+.titulo-evento {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
+/*section de mision y vision*/
+
+.section_mision {
+  padding: 40px 0;
+  /* Aumenta el espaciado para que la sección tenga más presencia */
+  background-color: rgb(243, 241, 241);
+}
+
+.section_mision_sub {
+  margin-bottom: 20px;
+  /* Asegura espacio debajo del encabezado */
+}
+
+
+.section_mision_sub h2 {
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+}
+
+.section_botones {
+  display: flex;
+  /* Utiliza flexbox */
+  justify-content: center;
+  /* Centra los botones horizontalmente */
+  align-items: center;
+  /* Centra los botones verticalmente */
+  height: 40vh;
+  /* Altura de la sección */
+  gap: 20px;
+  /* Espacio entre los botones */
+  padding: 40px 0;
+  /* Margen superior */
+}
+
+.btn-grande {
+  position: relative;
+  width: 100%;
+  /* Asegura que el botón se ajuste al contenedor en móviles */
+  max-width: 430px;
+  /* Tamaño máximo del botón */
+  height: 280px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  /* Color de fondo por defecto para mayor contraste */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra sutil para profundidad */
+}
+
+.btn-grande img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  /* Añade transición para filtros */
+}
+
+.btn-grande:hover img {
+  transform: scale(1.1);
+  filter: brightness(70%);
+  /* Ajusta el brillo en hover para mejor contraste */
+}
+
+.btn-grande span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 20px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  /* Línea superior para mejor separación */
+}
+
+@media (max-width: 736px) {
+  .section_botones {
+    flex-direction: column;
+    height: auto;
+    gap: 10px;
+    padding: 20px 0;
+    /* Asegura buen espaciado en móviles */
+  }
+
+  .btn-grande {
+    width: 90%;
+    /* Asegura que los botones ocupen más espacio en móviles */
+    height: 180px;
+    /* Ajusta la altura para mejor visibilidad */
+  }
+
+  .btn-grande span {
+    font-size: 18px;
+    /* Tamaño de fuente ligeramente mayor para mejor legibilidad */
+    padding: 12px 0;
+    /* Mayor espaciado alrededor del texto */
+  }
+}
+
+/* Estilo específico para imágenes en el modal de Misión */
+#modalMision .modal-body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow-y: auto;
+  /* Ajusta la altura automáticamente */
+}
+
+#modalMision .modal-body img {
+  width: 100%;
+  /* Ajusta el ancho al 100% del contenedor */
+  max-width: 450px;
+  /* Ajusta el ancho máximo si es necesario */
+  padding: 20px;
+}
+
+/* Estilo específico para imágenes en el modal de Visión */
+#modalVision .modal-body {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  overflow-y: hidden;
+  /* Ajusta la altura automáticamente */
+}
+
+/* Estilo para las imágenes en el modal de Visión */
+#modalVision .modal-body img {
+  width: 100%;
+  /* Ajusta el ancho al 100% del contenedor */
+  max-width: 750px;
+  /* Ajusta el ancho máximo si es necesario */
+  height: auto;
+  /* Mantiene la proporción de la imagen */
+  padding: 20px;
+}
+
+/* Estilo específico para imágenes en el modal de Propuesta Educativa */
+#modalPropuestaEducativa .modal-body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow-y: auto;
+  /* Ajusta la altura automáticamente */
+}
+
+#modalPropuestaEducativa .modal-body img {
+  height: 500px;
+  padding: 20px;
+}
+
+
+/* Estilo específico para imágenes en el modal de Talleres y Eventos */
+#modalTalleresyEventos .modal-body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow-y: auto;
+  /* Ajusta la altura automáticamente */
+}
+
+#modalTalleresyEventos .modal-body img {
+  height: 530px;
+  padding: 20px;
+}
+
+
+/*section escolar*/
+
+.section_escolar {
+  padding: 40px 20px;
+  background-color: #f4f4f4;
+  /* Color de fondo opcional */
+}
+
+.escolar_div {
+  text-align: center;
+}
+
+.escolar_div h2 {
+  font-weight: bold;
+}
+
+.grados {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.grado {
+  position: relative;
+  width: calc(33.333% - 20px);
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  /* Cambia el cursor a pointer */
+
+}
+
+.grado:hover {
+  transform: scale(1.05);
+}
+
+.grado img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  /* Cambia el cursor a pointer al pasar sobre la imagen */
+
+
+}
+
+.titulo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/*section deportes*/
+
+.section_deportes {
+  padding: 40px 20px;
+  background-color: #f1eeee;
+}
+
+.deportes_div {
+  text-align: center;
+}
+
+.deportes_div h2 {
+  font-weight: bold;
+  color: #000000;
+}
+
+
+.deportes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.deporte {
+  position: relative;
+  width: calc(25% - 20px);
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.deporte:hover {
+  transform: scale(1.05);
+}
+
+.deporte img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.titulo-deporte {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+@media (max-width: 736px) {
+
+  /* Section Escolar */
+  .grados {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grado {
+    width: 90%;
+  }
+
+  .titulo {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  /* Section Deportes */
+  .deportes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .deporte {
+    width: 90%;
+  }
+
+  .titulo-deporte {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+
+
+
+/*section de el texto e imagen personal*/
+
+.personal {
+  display: flex;
+  background-color: green;
+}
+
+.video_informativo {
+  background-color: rgb(39, 59, 240);
+}
+
+/*seccion de el video y mapa*/
+.section_video {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/*footer de informacion*/
+
+
+.info_titulo {
+  margin-bottom: 20px;
+}
+
+.info_titulo h4 {
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
+
+td {
+  color: black;
+}
+
+.cl_t {
+  color: white;
+}
+
+.cl_d {
+  color: white;
+}
+
+/*mapa*/
+
+.inf-tit-map {
+  text-decoration: none;
+  color: black;
+}
+
+.inf-tit-map a {
+  text-decoration: none;
+  color: black;
+}
+
+.inf-tit-map a:hover {
+  color: black;
+}
+
+@media (max-width: 736px) {
+  .section_video {
+    display: block
+  }
+}
+
+
+.footer_informacion {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(39, 59, 240);
+  padding: 35px;
+}
+
+.foot_info_es {
+  margin: 0 50px;
+}
+
+.info_hor_tablas {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+
+}
+
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  unicode-bidi: isolate;
+}
+
+td:nth-child(3) {
+  width: 190px;
+  /* Fija el ancho de la columna derecha */
+}
+
+/*Enlaces y Politicas*/
+
+
+.inf_titu_li {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.inf_titu_li li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.inf_titu_li li::before {
+  content: "\f0da";
+  color: white;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+.inf_titu_li a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+
+.foot_red_li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.foot_red_li li {
+  margin: 0 5px;
+}
+
+.inf_titu {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.inf_titu li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.pol_cal {
+  width: 100px;
+}
+
+.lib_rec {
+  width: 100px;
+}
+
+.inf_titu li::before {
+  content: "\f0da";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: black;
+}
+
+.inf_titu a {
+  text-decoration: none;
+  color: rgb(255, 255, 255)
+}
+
+/*iconos del footer*/
+
+.foot_icono {
+  border: 2.5px solid #ffffff;
+  /* Color y grosor del borde */
+  border-radius: 50%;
+  /* Hace que el borde sea circular */
+  padding: 3.5px;
+  /* Espacio interno para hacer el ícono más grande */
+  display: inline-flex;
+  /* Centra el ícono dentro del círculo */
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  width: 15px;
+  /* Ancho y alto del contenedor */
+  height: 15px;
+  color: #ffffff;
+}
+
+.foot_icono:hover {
+  background-color: #ffffff;
+  border-radius: 50%;
+  /* Hace que el borde sea circular */
+  padding: 3.5px;
+  /* Espacio interno para hacer el ícono más grande */
+  display: inline-flex;
+  /* Centra el ícono dentro del círculo */
+  justify-content: center;
+  /* Centra horizontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+  width: 15px;
+  /* Ancho y alto del contenedor */
+  height: 15px;
+  color: rgb(12, 36, 248);
+  transition: background-color 0.2s ease;
+}
+
+
+/*footer de derechos*/
+.footer_derechos {
+  background-color: rgb(14, 31, 182);
+  font-size: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  line-height: 25px;
+  width: 100%;
+  padding: 10px 0 5px 0;
+  height: 60px;
+
+}
+
+.foot_der_logo {
+  margin-left: 250px
+}
+
+.foor_der_lo_img {
+  width: 57px;
+}
+
+.foot_der_texto {
+  vertical-align: middle;
+}
+
+.foot_der_texto p {
+  color: white;
+  font-weight: 500;
+  margin-bottom: 0;
+  font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  .footer_informacion {
+    display: block;
+  }
+
+  .foot_info_es {
+    margin: 20px 0;
+  }
+
+  .footer_derechos {
+    display: block;
+  }
+}
+
+/* Diseño responsivo */
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* Ocultamos los enlaces por defecto */
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
+    /* Mostramos los enlaces cuando el menú está activo */
+  }
+
+  .colegio_Menu {
+    display: block;
+    /* Mostramos el icono del menú en pantallas pequeñas */
+    cursor: pointer;
+  }
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* Ocultamos los enlaces por defecto */
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links.active {
+    display: flex;
+    /* Mostramos los enlaces cuando el menú está activo */
+  }
+
+  .colegio_Menu {
+    display: block;
+    /* Mostramos el icono del menú en pantallas pequeñas */
+    cursor: pointer;
+  }
+}
+
+
+/* Responsivo para sección de imágenes */
+@media (max-width: 1200px) {
+  .section_imagenes .imagen-col {
+    max-width: 45%;
+    /* Ajusta el ancho máximo en pantallas medianas */
+  }
+
+  .section_imagenes img {
+    height: 400px;
+    /* Ajusta la altura en pantallas medianas */
+  }
+}
+
+@media (max-width: 992px) {
+  .section_imagenes .imagen-col {
+    max-width: 100%;
+    /* Ajusta el ancho máximo en pantallas pequeñas */
+  }
+
+  .section_imagenes img {
+    height: 300px;
+    /* Ajusta la altura en pantallas pequeñas */
+  }
+
+  .section_imagenes p {
+    font-size: 14px;
+    /* Ajusta el tamaño del texto en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+  .section_imagenes img {
+    height: 200px;
+    /* Ajusta la altura en pantallas muy pequeñas */
+  }
+
+  .section_imagenes p {
+    font-size: 12px;
+    /* Ajusta el tamaño del texto en pantallas muy pequeñas */
+  }
+}
+
+@media (max-width: 1200px) {
+  .section_presentacion .carousel-inner .carousel-item {
+    height: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .section_presentacion .carousel-inner .carousel-item {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section_presentacion .carousel-inner .carousel-item {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .imagen_aniversario img {
+    width: 100%;
+    height: 250px;
+  }
+
+  .imagen_director img {
+    width: 100%;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  @media (max-width: 768px) {
+    .modal_texto {
+      max-height: 60vh;
+    }
+  }
+
+
+  .modal-dialog {
+    max-width: 100%;
+  }
+
+  .modal-body {
+    padding: 10px;
+  }
+
+  .modal_texto h5 {
+    font-size: 18px;
+  }
+
+  .modal_texto p {
+    font-size: 16px;
+
+
+  }
+}
+
+.titulo_ubicar h4 {
+  color: #000000;
+}
+
+/* Estilos adicionales para la tabla en el modal */
+.modal_texto table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.modal_texto table th,
+.modal_texto table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.modal_texto table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.video {
+  background-color: rgb(238, 233, 233);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  /* Centra el contenido del video */
+}
+
+.video h4 {
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* Espacio entre el título y el video */
+}
+
+.video video {
+  border-radius: 8px;
+  /* Bordes redondeados en el video */
+  max-width: 100%;
+  /* Asegura que el video no se salga del contenedor */
+}
+
+
+
+
+.foot_info_mapa {
+  max-width: 100%;
+  /* Asegúrate de que el contenedor no se desborde */
+}
+
+
+
+.inf-tit-map {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  /* Color del enlace */
+  text-decoration: none;
+  /* Quitar el subrayado */
+  font-weight: bold;
+}
+
+
+/* Estilos para el modal de contacto */
+.contacto-modal {
+  display: block;
+  position: fixed;
+  top: 20px; /* Ajusta el margen superior para que no se quede pegado al borde superior */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* Ajusta el ancho del modal para que sea más pequeño en pantallas pequeñas */
+  max-width: 600px; /* Establece un ancho máximo para el modal */
+  margin: 0 auto; /* Centra el modal horizontalmente */
+}
+
+/* Asegura que el modal se ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+  .contacto-modal {
+    width: 95%; /* Aumenta el ancho del modal en pantallas pequeñas */
+    top: 10px; /* Ajusta el margen superior en pantallas pequeñas */
+  }
+}
+
+/* Asegura que el modal se ajuste en pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .contacto-modal {
+    width: 100%; /* El modal ocupará todo el ancho de la pantalla en pantallas muy pequeñas */
+    top: 5px; /* Ajusta el margen superior en pantallas muy pequeñas */
+  }
+}
+
+
+
+.contacto-header {
+  background-color: #007bff;
+  /* Cambia el color de fondo del header del modal */
+  color: #ffffff;
+  /* Cambia el color del texto en el header */
+}
+
+.contacto-body {
+  font-family: Arial, sans-serif;
+  /* Cambia la fuente si lo deseas */
+}
+
+.contacto-list {
+  line-height: 1.6;
+  /* Ajusta el interlineado para mejor legibilidad */
+}
+
+.contacto-icon {
+  color: #007bff;
+  /* Cambia el color de los íconos si lo deseas */
+}

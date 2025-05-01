@@ -1,0 +1,128 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background-color: #f0f8ff;
+}
+
+.color_body{
+    background-color: #f0f8ff;
+}
+.form-container {
+    width: 420px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.form-container h2 {
+    text-align: center;
+    color: rgb(12, 36, 248);
+    margin-bottom: 20px;
+    font-family: 'Verdana', sans-serif;
+    font-size: 22px;
+}
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #dcdcdc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+.form-group input:focus, .form-group select:focus {
+    border-color: rgb(12, 36, 248);
+    outline: none;
+}
+.form-group .half-width {
+    width: 48%;
+    float: left;
+}
+.form-group .half-width + .half-width {
+    float: right;
+}
+.form-group::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.form-group select {
+    appearance: none;
+}
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+.buttons input {
+    margin: 0 10px;
+}
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(12, 36, 248);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.submit-button:hover {
+    background-color: rgb(12, 36, 248);
+}
+/* Mejora para la sección de "¿Está de acuerdo?" */
+.agreement-container {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.agreement-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.agreement-option {
+    margin-right: 20px;
+}
+.agreement-option label {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+.agreement-option input[type="radio"] {
+    display: none;
+}
+.agreement-option input[type="radio"]:checked + label {
+    background-color: rgb(12, 36, 248);
+    color: white;
+}
+.form-group::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.error {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
+
+
+

@@ -1,0 +1,9 @@
+<!-- En add_form.html -->
+<form id="addForm" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.codigo.label }} {{ form.codigo }} {{ form.codigo.errors|add_class:"error-message" }}
+    {{ form.nombre.label }} {{ form.nombre }} {{ form.nombre.errors|add_class:"error-message" }}
+    {{ form.descripcion.label }} {{ form.descripcion }} {{ form.descripcion.errors|add_class:"error-message" }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

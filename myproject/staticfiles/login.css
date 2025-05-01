@@ -1,0 +1,73 @@
+.form-outline {
+    position: relative;
+}
+
+.form-control {
+    border: 1px solid #007bff; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding inside the input */
+    font-size: 16px; /* Font size */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+    width: 100%; /* Make inputs full width */
+}
+
+.form-control:focus {
+    border-color: #0056b3; /* Darker border color on focus */
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Shadow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+.form-outline label {
+    top: -10px; /* Position label above the input */
+    left: 15px; /* Left padding for label */
+    font-size: 19px; /* Font size for label */
+    transition: 0.2s ease all; /* Smooth transition for label */
+}
+
+.form-outline input:focus + label,
+.form-outline input:not(:placeholder-shown) + label {
+    top: -20px; /* Move label higher on focus or input filled */
+    left: 10px; /* Adjust left padding */
+    font-size: 12px; /* Smaller font size for label */
+    color: #0056b3; /* Change color of the label */
+}
+
+/* Estilos específicos para los inputs de usuario y contraseña */
+.username, .password {
+    display: block; /* Cambiar a bloque para mejor manejo en responsividad */
+    width: 100%; /* Ancho completo en dispositivos pequeños */
+    max-width: 467px; /* Ancho máximo para mantener la estética */
+    margin: 0 auto 15px; /* Centrar y espacio inferior */
+    padding: 10px; /* Espaciado interno para mayor comodidad */
+    -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border: 1px solid #000000;
+}
+
+/* Errores de validación */
+.form-outline .error-message {
+    color: #dc3545; /* Color de error */
+    font-size: 12px; /* Tamaño de fuente */
+    margin-top: 5px; /* Espacio superior */
+    max-height: 0.1px;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    max-height: 0.1px;
+}
+
+
+/* Diseño responsivo */
+@media (max-width: 576px) {
+    .username, .password {
+        max-width: 100%; /* Ancho completo en dispositivos móviles */
+    }
+}
+
+span{
+    color: white;
+}
+
