@@ -7,7 +7,7 @@ from .models import Empleado
 class EmpleadoForm(forms.ModelForm):
     """Formulario para el modelo Empleado con validaciones personalizadas."""
     
-    # Definimos los campos una sola vez con sus validadores
+    # Definimosss los campos una sola vez con sus validadores
     codigo = forms.CharField(
         validators=[validar_codigo],
         help_text="Ingrese un código alfanumérico"
