@@ -12,39 +12,65 @@
     <link rel="icon" href="{% static 'imagenes/logo_naciones_unidas.png'%}" type="image/x-icon">
     <style>
         body {
-            background-color: #f4f7fa;
-
+            background-color: #eef2f7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
         }
-
-
+    
         .form-control {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            width: 100%;
+            box-sizing: border-box;
         }
-
+    
         .card {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            padding: 25px;
             background-color: #ffffff;
-            border-radius: 8px;
+            border-radius: 10px;
+            max-width: 800px;
         }
-
+    
         h1,
         h3 {
-            color: #333;
+            color: #34495e;
+            text-align: center;
+            margin-bottom: 20px;
         }
-
+    
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    
         .table th,
         .table td {
             text-align: center;
+            padding: 10px;
+            border: 1px solid #dee2e6;
         }
-
+    
+        .table thead {
+            background-color: #f0f4f8;
+            color: #333;
+            font-weight: bold;
+        }
+    
         .table-striped tbody tr:nth-child(odd) {
-            background-color: #f8f9fa;
+            background-color: #f9fbfc;
         }
-
-        .table-bordered {
-            border: 1px solid #ddd;
+    
+        .table-striped tbody tr:hover {
+            background-color: #e8f0fa;
         }
     </style>
 
