@@ -31,7 +31,7 @@ LOGIN_URL = '/autenticacion/login/'  # Ajusta esta URL si es necesario
 ALLOWED_HOSTS = []
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
-    'C:/Users/yacta/Desktop/proyectoHD/django/myproject/myproject/pagina-web/static']
+    'D:/UTP/ciclo 7/Herramientas de Desarrollo/proyecto-git/ProyectoHD/myproject/myproject/pagina-web/static']
 
 
 # settings.py
@@ -71,7 +71,7 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/yacta/Desktop/proyectoHD/django/myproject/myproject/pagina-web'],
+        'DIRS': ['D:/UTP/ciclo 7/Herramientas de Desarrollo/proyecto-git/ProyectoHD/myproject/myproject/pagina-web'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,7 +98,10 @@ DATABASES = {
         'USER': 'colegio_naciones',
         'PASSWORD': '123',
         'HOST': 'localhost', 
-        'PORT': '5432',       
+        'PORT': '5432',    
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },   
     }
 }
 
