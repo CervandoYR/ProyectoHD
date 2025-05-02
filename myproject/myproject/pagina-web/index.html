@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Colegio - Naciones </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link rel='stylesheet' href="{% static 'iniciocss.css' %}">
+    <script src="{% static 'iniciojs.js'%}""></script>
+    <link rel="icon" href="{% static 'imagenes/logo_naciones_unidas.png'%}" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- Modal de Bienvenida -->
+    <div class="modal-bienvenida">
+        <div class="modal fade" id="inicioModal" tabindex="-1" aria-labelledby="inicioModalLabel" aria-hidden="true"
+            data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="inicioModalLabel">¡Bienvenido!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bienvenido a nuestro sitio web educativo.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal Contacto -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content contacto-modal">
+            <div class="modal-header contacto-header">
+                <h5 class="modal-title" id="contactModalLabel">Contáctanos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body contacto-body">
+                <ul class="list-unstyled contacto-list">
+                    <li class="mb-3">
+                        <i class="fas fa-clock fa-2x me-2 contacto-icon"></i>
+                        <strong>Horario de atención:</strong> De lunes a viernes 07:00 a.m. a 08:00 p.m.
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-map-marker-alt fa-2x me-2 contacto-icon"></i>
+                        <strong>Dirección:</strong> Joaquín Bernal 453, Lima 15801
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt fa-2x me-2 contacto-icon"></i>
+                        <strong>Central telefónica:</strong> (+51) 999-8181
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Navbar responsive -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <div class="nav_logo">
+                <a href="#"><img class="nav_log_img" src="{% static 'imagenes/logo_naciones_unidas.png' %}" alt="logo del colegio"></a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse nav_links" id="navbarNav">
+                <ul class="navbar-nav ms-auto lista-links">
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Sesión</a>
+                    </li>
+             
+                </ul>
+                <ul class="navbar-nav ms-auto lista-icons">
+                    <li class="nav-item nav-item-icon"><a class="nav-link" href="https://web.facebook.com/NacionesUnidas7062" target="_blank"> <i
+                                class="fa-brands fa-facebook-f nav_icono"></i></a></li>
+                    <li class="nav-item nav-item-icon"><a class="nav-link" href="#"><i
+                                class="fa-brands fa-twitter nav_icono"></i></a></li>
+                    <li class="nav-item nav-item-icon"><a class="nav-link" href="#"><i
+                                class="fa-brands fa-youtube nav_icono"></i></a></li>
+                    <li class="nav-item nav-item-icon"><a class="nav-link" href="#"><i
+                                class="fa-brands fa-instagram nav_icono"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <main>
+
+
+       <section class="sect_presentacion">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                        aria-label="Slide 5"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'imagenes/colegio.png' %}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'imagenes/colegio_personas.png' %}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'imagenes/imagen 3.jpg'%}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'imagenes/imagen_desfile.png'%}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'imagenes/imagen 1.jpg'%}" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <i class="fa-solid fa-angle-left"></i>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section> 
+    <!--<a href="#" class="btn btn-primary">hola </a>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+
+</html>
