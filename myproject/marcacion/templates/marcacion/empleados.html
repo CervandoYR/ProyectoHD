@@ -4,276 +4,744 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registro y Consultar </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel='stylesheet' href="{% static 'empleados.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro y Consulta de Empleados</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="{% static 'imagenes/logo_naciones_unidas.png'%}" type="image/x-icon">
     <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+        }
+
         body {
-            background-color: #eef2f7;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2c3e50;
-            margin: 0;
-            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: var(--dark-color);
         }
-    
-        .form-control {
-            margin-bottom: 12px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-            width: 100%;
-            box-sizing: border-box;
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.8rem 1rem;
         }
-    
+
+        .navbar-brand {
+            font-weight: 600;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            z-index: 1000;
+            padding-top: 60px;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            border-left: 3px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .sidebar a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .logout-btn {
+            color: var(--danger-color);
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(220, 53, 69, 0.1) !important;
+        }
+
+        .content {
+            margin-left: 0;
+            transition: all 0.3s;
+            padding: 20px;
+            min-height: calc(100vh - 56px);
+        }
+
+        .content.shifted {
+            margin-left: 250px;
+        }
+
         .card {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            margin: 30px auto;
-            padding: 25px;
-            background-color: #ffffff;
+            border: none;
             border-radius: 10px;
-            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+            overflow: hidden;
         }
-    
-        h1,
-        h3 {
-            color: #34495e;
-            text-align: center;
-            margin-bottom: 20px;
+
+        .card-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 20px;
+            border-bottom: none;
         }
-    
-        .table {
-            width: 100%;
-            border-collapse: collapse;
+
+        .table-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
             margin-top: 20px;
-            font-size: 14px;
         }
-    
-        .table th,
-        .table td {
-            text-align: center;
-            padding: 10px;
-            border: 1px solid #dee2e6;
+
+        .table thead th {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom: none;
+            font-weight: 500;
         }
-    
-        .table thead {
-            background-color: #f0f4f8;
-            color: #333;
-            font-weight: bold;
-        }
-    
+
         .table-striped tbody tr:nth-child(odd) {
-            background-color: #f9fbfc;
+            background-color: rgba(67, 97, 238, 0.05);
         }
-    
-        .table-striped tbody tr:hover {
-            background-color: #e8f0fa;
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            border-color: var(--danger-color);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .dropdown-menu {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .dropdown-item {
+            padding: 8px 16px;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+
+        .user-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .admin-badge {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: var(--success-color);
+        }
+
+        .profesor-badge {
+            background-color: rgba(13, 110, 253, 0.2);
+            color: rgb(252, 195, 88);
+        }
+
+        .estudiante-badge {
+            background-color: rgba(108, 117, 125, 0.2);
+            color: rgb(255, 236, 67);
+        }
+
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+
+            .sidebar.active {
+                width: 100%;
+                left: 0;
+            }
+        }
+
+        /* Animaciones de feedback */
+        .alert-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            min-width: 300px;
+            transition: all 0.5s ease;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Mejoras para el formulario */
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            background-image: none;
+            padding-right: 0.75rem;
+        }
+
+        .form-control.is-valid {
+            border-color: #28a745;
+            background-image: none;
+            padding-right: 0.75rem;
         }
     </style>
-
-
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <button class="menu-toggle btn btn-outline-light" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <span class="nav-link">
-                        {{ user.username }} - {{ user_role }}
-                        {% if is_admin %}(Admin){% elif is_profesor %}(Profesor){% else %}(Estudiante){% endif %}
-                    </span>
-                </li>
-                {% endif %}
-                <li class="nav-item">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <button class="btn btn-outline-light me-2" id="sidebarToggle">
+                <i class="fas fa-bars" id="sidebarIcon"></i>
+            </button>
 
-                </li>
-            </ul>
+            <div class="d-flex align-items-center">
+                {% if user.is_authenticated %}
+                <span class="user-badge 
+                {% if is_admin %}admin-badge
+                {% elif is_profesor %}profesor-badge
+                {% else %}estudiante-badge
+                {% endif %}">
+                    <i class="fas fa-user-circle me-1"></i>
+                    {{ user.username }}
+                    {% if is_admin %}(Admin)
+                    {% elif is_profesor %}(Profesor)
+                    {% else %}(Estudiante)
+                    {% endif %}
+                </span>
+                {% endif %}
+            </div>
         </div>
     </nav>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        {% if is_admin %}
-        <a href="{% url 'registro' %}" class="btn"><i class="fas fa-user-plus"></i> Registrarse</a>
-        {% endif %}
-        <a href="{% url 'empleados' %}" class="btn btn-secondary"><i class="fas fa-users"></i> Empleados</a>
-        <a class="btn logout-btn" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+        <div class="sidebar-header d-flex justify-content-end p-3">
+            <button class="btn btn-sm btn-outline-danger" id="closeSidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
 
+        <div class="sidebar-menu">
+            {% if is_admin %}
+            <a href="{% url 'registro' %}" class="d-flex align-items-center">
+                <i class="fas fa-user-plus"></i>
+                <span>Registrarse</span>
+            </a>
+            {% endif %}
+            <a href="{% url 'empleados' %}" class="d-flex align-items-center">
+                <i class="fas fa-users"></i>
+                <span>Estudiantes</span>
+            </a>
+            <a href="{% url 'editar_perfil' %}" class="d-flex align-items-center">
+                <i class="fas fa-user-edit"></i>
+                <span>Editar Perfil</span>
+            </a>
+            <a href="{% url 'logout' %}" class="d-flex align-items-center logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar sesión</span>
+            </a>
+        </div>
     </div>
 
+    <!-- Overlay para cerrar el sidebar al hacer clic fuera -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+    <style>
+        /* Agrega estos estilos al CSS existente */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            transition: all 0.3s;
+        }
+
+        .sidebar-header {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-header {
+                display: flex;
+            }
+
+            .sidebar.active+.sidebar-overlay {
+                display: block;
+            }
+        }
+    </style>
+
+    <!-- Main Content -->
     <div class="content" id="content">
-        <div class="container mt-4">
-            <h2>Registrar y Consultar </h2>
-    
-            <!-- Mostrar solo para Admin y Profesor -->
-            {% if is_admin or is_profesor %}
-                <button type="button" class="btn btn-success mb-3" onclick="openAddModal()">Agregar</button>
-            {% endif %}
-    
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h2 class="fw-bold mb-3">Gestión de Estudiantes</h2>
+
+                    <!-- Mostrar solo para Admin y Profesor -->
+                    {% if is_admin or is_profesor %}
+                    <button type="button" class="btn btn-success mb-3" onclick="openAddModal()">
+                        <i class="fas fa-plus-circle me-2"></i>Agregar Estudiante
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+
             <!-- Tabla de empleados -->
-            <h3>Lista de Empleados</h3>
-            <table id="employeeTable" class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Código</th>
-                        <th>Nombre</th>
-                        <th>Dni</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for empleado in empleados %}
-                    <tr>
-                        <td>{{ empleado.codigo }}</td>
-                        <td>{{ empleado.nombre }}</td>
-                        <td>{{ empleado.dni }}</td>
-                        <td>
-                            <!-- Mostrar solo para Admin y Profesor -->
-                            {% if is_admin or is_profesor %}
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-cog"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#" onclick="openEditModal('{{ empleado.id }}')">Actualizar</a>
-                                        {% if is_admin %}
-                                            <form method="post" action="{% url 'eliminar_empleado' empleado.id %}" style="display:inline;">
-                                                {% csrf_token %}
-                                                <button type="submit" class="dropdown-item" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">Eliminar</button>
-                                            </form>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="fas fa-list-alt me-2"></i>Lista de Estudiantes</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="employeeTable" class="table table-striped table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombre(s)</th>
+                                    <th>Apellido(s)</th>
+                                    <th>DNI</th>
+                                    <th>Telefono</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for empleado in empleados %}
+                                <tr>
+                                    <td>{{ empleado.codigo }}</td>
+                                    <td>{{ empleado.nombre }}</td>
+                                    <td>{{ empleado.apellido }}</td>
+                                    <td>{{ empleado.dni }}</td>
+                                    <td>{{ empleado.telefono }}</td>
+                                    <td>
+                                        <!-- Mostrar solo para Admin y Profesor -->
+                                        {% if is_admin or is_profesor %}
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#"
+                                                        onclick="openEditModal('{{ empleado.id }}')">
+                                                        <i class="fas fa-edit me-2"></i>Actualizar
+                                                    </a></li>
+                                                {% if is_admin %}
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li>
+                                                    <form method="post"
+                                                        action="{% url 'eliminar_empleado' empleado.id %}"
+                                                        style="display:inline;">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="dropdown-item text-danger"
+                                                            onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?');">
+                                                            <i class="fas fa-trash-alt me-2"></i>Eliminar
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                        {% else %}
+                                        <span class="badge bg-secondary">Solo lectura</span>
                                         {% endif %}
-                                    </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar empleado -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">
+                        <i class="fas fa-user-plus me-2"></i>Agregar Empleado
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm" method="post">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="id_codigo" class="form-label">Código</label>
+                                    <input type="text" class="form-control" id="id_codigo" name="codigo" required>
+                                    <small id="codigoError" class="text-danger"></small>
                                 </div>
-                            {% else %}
-                                <span class="text-muted">Solo lectura</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label for="id_dni" class="form-label">DNI</label>
+                                    <input type="text" class="form-control" id="id_dni" name="dni" required>
+                                    <small id="dniError" class="text-danger"></small>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- Modal para agregar empleado -->
-        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
-            aria-hidden="true" data-backdrop="static" data-keyboard="false">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addModalLabel">Agregar Empleado</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="addForm" method="post">
-                            {% csrf_token %}
-                            {{ form.non_field_errors }}
-                            <div class="form-group">
-                                {{ form.codigo.errors }}
-                                {{ form.codigo.label }} {{ form.codigo }}
-                                <small id="codigoError" class="text-danger"></small>
+                        <div class="form-group mb-6">
+                            <label for="id_nombre" class="form-label">Nombre(s)</label>
+                            <input type="text" class="form-control" id="id_nombre" name="nombre" required>
+                            <small id="nombreError" class="text-danger"></small>
+                        </div>
+
+                        <div class="form-group mb-6">
+                            <label for="id_apellido" class="form-label">Apellido(s)</label>
+                            <input type="text" class="form-control" id="id_apellido" name="apellido" required>
+                            <small id="apellidoError" class="text-danger"></small>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <div class="mb-3">
+                                <label for="id_telefono" class="form-label">Telefono</label>
+                                <input type="text" class="form-control" id="id_telefono" name="telefono" required>
+                                <small id="telefonoError" class="text-danger"></small>
                             </div>
-                            <div class="form-group">
-                                {{ form.nombre.errors }}
-                                {{ form.nombre.label }} {{ form.nombre }}
-                                <small id="nombreError" class="text-danger"></small>
-                            </div>
-                            <div class="form-group">
-                                {{ form.dni.errors }}
-                                {{ form.dni.label }} {{ form.dni }}
-                                <small id="dniError" class="text-danger"></small>
-                            </div>
-                            <!-- Botón de envío deshabilitado por defecto -->
-                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Guardar</button>
-                        </form>
+                        </div>
 
 
-                    </div>
+
+
+                        <div class="d-flex justify-content-end mt-4">
+                            <button type="button" class="btn btn-outline-secondary me-2"
+                                data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                                <i class="fas fa-save me-2"></i>Guardar
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-
-
-        <!-- Modal para editar empleado -->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel">Editar Empleado</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" id="editModalContent">
-                        <!-- El contenido del formulario se cargará aquí -->
-                    </div>
+    <!-- Modal para editar empleado -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">
+                        <i class="fas fa-user-edit me-2"></i>Editar Empleado
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="editModalContent">
+                    <!-- El contenido del formulario se cargará aquí -->
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    </div>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const codigoInput = document.getElementById('id_codigo');
-                const nombreInput = document.getElementById('id_nombre');
-                const dniInput = document.getElementById('id_dni');
-                const submitBtn = document.getElementById('submitBtn');
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
-                // Función para verificar si todos los campos son válidos
-                function checkFormValidity() {
-                    const isCodigoValid = /^\d+$/.test(codigoInput.value);
-                    const isNombreValid = /^[a-zA-Z]+$/.test(nombreInput.value);
-                    const isDniValid = /^\d{8}$/.test(dniInput.value);  // Validar DNI como exactamente 8 dígitos
 
-                    // Habilita el botón si todos los campos son válidos
-                    submitBtn.disabled = !(isCodigoValid && isNombreValid && isDniValid);
+    <style>
+        /* Agrega estos estilos al CSS existente */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+            transition: all 0.3s;
+        }
+
+        .sidebar-header {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-header {
+                display: flex;
+            }
+
+            .sidebar.active+.sidebar-overlay {
+                display: block;
+            }
+        }
+    </style>
+
+    <script>
+        // Reemplaza el código JavaScript existente del sidebar con este
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebar = document.getElementById('sidebar');
+            const content = document.getElementById('content');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarIcon = document.getElementById('sidebarIcon');
+            const closeSidebar = document.getElementById('closeSidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+            // Función para alternar el sidebar
+            function toggleSidebar() {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('shifted');
+
+                // Cambiar ícono
+                if (sidebar.classList.contains('active')) {
+                    sidebarIcon.classList.remove('fa-bars');
+                    sidebarIcon.classList.add('fa-times');
+                } else {
+                    sidebarIcon.classList.remove('fa-times');
+                    sidebarIcon.classList.add('fa-bars');
                 }
+            }
 
-                // Validar código: solo números
-                codigoInput.addEventListener('input', function () {
-                    const errorMessage = /^\d+$/.test(codigoInput.value)
-                        ? ''
-                        : 'El código debe contener solo números.';
-                    document.getElementById('codigoError').textContent = errorMessage;
-                    checkFormValidity();
+            // Event listeners
+            sidebarToggle.addEventListener('click', toggleSidebar);
+            closeSidebar.addEventListener('click', toggleSidebar);
+            sidebarOverlay.addEventListener('click', toggleSidebar);
+
+            // Cerrar sidebar al hacer clic en un enlace (en móviles)
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.sidebar a').forEach(link => {
+                    link.addEventListener('click', toggleSidebar);
                 });
+            }
 
-                // Validar nombre: solo letras
-                nombreInput.addEventListener('input', function () {
-                    const errorMessage = /^[a-zA-Z]+$/.test(nombreInput.value)
-                        ? ''
-                        : 'El nombre debe contener solo letras.';
-                    document.getElementById('nombreError').textContent = errorMessage;
-                    checkFormValidity();
-                });
+            // Ajustar al cambiar tamaño de pantalla
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('active');
+                    content.classList.remove('shifted');
+                    sidebarIcon.classList.remove('fa-times');
+                    sidebarIcon.classList.add('fa-bars');
+                    sidebarOverlay.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
-                // Validar DNI: exactamente 8 dígitos
-                dniInput.addEventListener('input', function () {
-                    const errorMessage = /^\d{8}$/.test(dniInput.value)
-                        ? ''
-                        : 'El DNI debe contener exactamente 8 dígitos.';
-                    document.getElementById('dniError').textContent = errorMessage;
+    <script>
+        // Inicializar DataTables
+        $(document).ready(function () {
+            $('#employeeTable').DataTable({
+                responsive: true,
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                },
+                dom: '<"top"f>rt<"bottom"lip><"clear">',
+                initComplete: function () {
+                    $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Buscar...');
+                }
+            });
+        });
 
-                    // Verificar si el DNI ya existe en la base de datos
+        // Función para alternar el sidebar
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('content').classList.toggle('shifted');
+        }
+
+        // Funciones para abrir los modales
+        function openAddModal() {
+            var addModal = new bootstrap.Modal(document.getElementById('addModal'));
+            addModal.show();
+        }
+
+        function openEditModal(id) {
+            $.get(`/marcacion/empleados/actualizar/${id}/`, function (data) {
+                $('#editModalContent').html(data);
+                var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+                editModal.show();
+            }).fail(function () {
+                alert('Error al cargar los datos del empleado.');
+            });
+        }
+
+        // Validación del formulario
+        document.addEventListener("DOMContentLoaded", function () {
+            const codigoInput = document.getElementById('id_codigo');
+            const nombreInput = document.getElementById('id_nombre');
+            const apellidoInput = document.getElementById('id_apellido');
+            const dniInput = document.getElementById('id_dni');
+            const telefonoInput = document.getElementById('id_telefono');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Función para verificar si todos los campos son válidos
+            function checkFormValidity() {
+                const isCodigoValid = /^\d+$/.test(codigoInput.value);
+                const isNombreValid = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(nombreInput.value);
+                const isApellidoValid = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(apellidoInput.value);
+                const isDniValid = /^\d{8}$/.test(dniInput.value);
+                const isTelefonoValid = /^\d{9}$/.test(telefonoInput.value);
+
+                submitBtn.disabled = !(isCodigoValid && isNombreValid && isApellidoValid && isDniValid && isTelefonoValid);
+            }
+
+            // Validar código: solo números
+            codigoInput.addEventListener('input', function () {
+                const errorMessage = /^\d+$/.test(codigoInput.value)
+                    ? ''
+                    : 'El código debe contener solo números.';
+                document.getElementById('codigoError').textContent = errorMessage;
+                checkFormValidity();
+            });
+
+            // Expresión regular más completa para nombres y apellidos
+            const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s'-]+$/;
+
+            // Para nombre
+            nombreInput.addEventListener('input', function () {
+                const isValid = nameRegex.test(nombreInput.value);
+                document.getElementById('nombreError').textContent = isValid ? '' : 'El nombre solo puede contener letras y espacios';
+                nombreInput.classList.toggle('is-invalid', !isValid);
+                checkFormValidity();
+            });
+
+            // Para apellido
+            apellidoInput.addEventListener('input', function () {
+                const isValid = nameRegex.test(apellidoInput.value);
+                document.getElementById('apellidoError').textContent = isValid ? '' : 'El apellido solo puede contener letras y espacios';
+                apellidoInput.classList.toggle('is-invalid', !isValid);
+                checkFormValidity();
+            });
+
+            // Validar DNI: exactamente 8 dígitos
+            dniInput.addEventListener('input', function () {
+                const errorMessage = /^\d{8}$/.test(dniInput.value)
+                    ? ''
+                    : 'El DNI debe contener exactamente 8 dígitos.';
+                document.getElementById('dniError').textContent = errorMessage;
+
+                // Verificar si el DNI ya existe en la base de datos
+                if (/^\d{8}$/.test(dniInput.value)) {
                     fetch('/verificar_dni/', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
                         },
                         body: JSON.stringify({ dni: dniInput.value })
                     })
@@ -281,109 +749,63 @@
                         .then(data => {
                             if (data.exists) {
                                 document.getElementById('dniError').textContent = 'El DNI ya está registrado.';
+                                submitBtn.disabled = true;
                             }
                         });
-
-                    checkFormValidity();
-                });
-            });
-
-
-
-
-
-            // Inicializar DataTables
-            $(document).ready(function () {
-                $('#employeeTable').DataTable({
-                    paging: true,
-                    searching: false,
-                    ordering: true,
-                    order: [],
-                    columnDefs: [
-                        { orderable: false, targets: 6 } // Desactivar orden en la columna de "Acciones"
-                    ]
-                });
-            });
-
-
-            // Filtro en tiempo real por código, nombre o DNI
-            $('#searchInput').on('keyup', function () {
-                const value = $(this).val().toLowerCase();
-                $('#employeeTable tbody tr').filter(function () {
-                    const codigo = $(this).find('td:nth-child(1)').text().toLowerCase();
-                    const nombre = $(this).find('td:nth-child(2)').text().toLowerCase();
-                    const dni = $(this).find('td:nth-child(3)').text().toLowerCase();
-                    $(this).toggle(codigo.includes(value) || nombre.includes(value) || dni.includes(value));
-                });
-            });
-
-            // Filtro en tiempo real por código
-            $('#searchByCodigo').on('keyup', function () {
-                const value = $(this).val().toLowerCase();
-                $('#employeeTable tbody tr').filter(function () {
-                    const codigo = $(this).find('td:nth-child(1)').text().toLowerCase();
-                    $(this).toggle(codigo.includes(value));
-                });
-            });
-
-            // Funciones para abrir los modales
-            function openAddModal() {
-                $('#addModal').modal('show');
-            }
-
-            function openEditModal(id) {
-
-                $.get(`/marcacion/empleados/actualizar/${id}/`, function (data) {
-                    $('#editModalContent').html(data); // Carga el formulario en el modal
-                    $('#editModal').modal('show');    // Muestra el modal
-                }).fail(function () {
-                    alert('Error al cargar los datos del empleado.');
-                });
-
-            }
-
-
-            // Evita que el usuario use el botón de retroceso
-            history.pushState(null, null, location.href);
-            window.onpopstate = function () {
-                history.go(1);
-            };
-
-            // Función para alternar el sidebar
-            function toggleSidebar() {
-                $('#sidebar').toggleClass('active');
-                $('#content').toggleClass('shifted'); // Cambiar margen al contenido
-            }
-
-            setTimeout(function () {
-                $('.alert').fadeOut('slow');
-            }, 5000);
-
-
-            // Validar código: solo números
-            document.getElementById('id_codigo').addEventListener('input', function () {
-                var codigo = this.value;
-                var errorMessage = '';
-                if (!/^\d+$/.test(codigo)) {
-                    errorMessage = "El código debe contener solo números.";
                 }
-                document.getElementById('codigoError').textContent = errorMessage;
+
+                checkFormValidity();
             });
 
-            // Validar nombre: solo letras
-            document.getElementById('id_nombre').addEventListener('input', function () {
-                var nombre = this.value;
-                var errorMessage = '';
-                if (!/^[a-zA-Z]+$/.test(nombre)) {
-                    errorMessage = "El nombre debe contener solo letras.";
+            // Validar Teléfono: exactamente 9 dígitos
+            telefonoInput.addEventListener('input', function () {
+                const errorMessage = /^\d{9}$/.test(telefonoInput.value)
+                    ? ''
+                    : 'El teléfono debe contener exactamente 9 dígitos.';
+                document.getElementById('telefonoError').textContent = errorMessage;
+
+                // Verificar si el teléfono ya existe en la base de datos
+                if (/^\d{9}$/.test(telefonoInput.value)) {
+                    fetch('/verificar_telefono/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: JSON.stringify({ telefono: telefonoInput.value })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exists) {
+                                document.getElementById('telefonoError').textContent = 'El teléfono ya está registrado.';
+                                submitBtn.disabled = true;
+                            }
+                        });
                 }
-                document.getElementById('nombreError').textContent = errorMessage;
+
+                checkFormValidity();
             });
+        });
 
+        // Evitar el uso del botón de retroceso
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
 
-
-
-        </script>
+        // Cerrar automáticamente las alertas después de 5 segundos
+        setTimeout(function () {
+            var alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+                alert.style.transition = 'opacity 0.5s';
+                alert.style.opacity = '0';
+                setTimeout(function () {
+                    alert.remove();
+                }, 500);
+            });
+        }, 5000);
+    </script>
+    <div id="toastContainer"></div>
 </body>
 
 </html>

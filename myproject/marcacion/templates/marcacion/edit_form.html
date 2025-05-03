@@ -1,5 +1,82 @@
-<form id="editForm" method="post" action="{% url 'actualizar_empleado' form.instance.id %}">
+<form id="editForm" method="post" action="{% url 'actualizar_empleado' form.instance.id %}" class="styled-employee-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    </div>
 </form>
+
+<style>
+    /* Estilos para el formulario de empleado */
+    .styled-employee-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 25px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .styled-employee-form p {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .styled-employee-form label {
+        font-weight: 500;
+        margin-bottom: 8px;
+        color: #2d3748;
+        font-size: 15px;
+    }
+
+    .styled-employee-form input[type="text"],
+    .styled-employee-form input[type="number"] {
+        padding: 10px 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .styled-employee-form input[type="text"]:focus,
+    .styled-employee-form input[type="number"]:focus {
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        outline: none;
+    }
+
+    .styled-employee-form .form-actions {
+        margin-top: 25px;
+        text-align: right;
+    }
+
+    .styled-employee-form .btn-primary {
+        background-color: #4299e1;
+        border-color: #4299e1;
+        padding: 10px 20px;
+        font-weight: 500;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .styled-employee-form .btn-primary:hover {
+        background-color: #3182ce;
+        transform: translateY(-1px);
+    }
+
+    .styled-employee-form .errorlist {
+        color: #e53e3e;
+        font-size: 14px;
+        margin-top: 5px;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    /* Estilo para el campo de código (readonly) */
+    .styled-employee-form input[readonly] {
+        background-color: #f7fafc;
+        color: #718096;
+        cursor: not-allowed;
+    }
+</style>

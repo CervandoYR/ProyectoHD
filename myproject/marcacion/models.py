@@ -4,8 +4,9 @@ from django.db.models import Max
 class Empleado(models.Model):
     codigo = models.CharField(max_length=2000, unique=True, blank=True)
     nombre = models.CharField(max_length=100)
+    apellido = models.CharField(max_length=100)
     dni = models.CharField(max_length=8)
-
+    telefono = models.CharField(max_length=9)
 
     def save(self, *args, **kwargs):
         if not self.codigo:
